@@ -60,23 +60,23 @@ def Crawler_datas_fn():
     print('下載csv完成')
 
     # 移動及更改檔名 若有移動檔案位置記得改new_fn
-    old_fn = r'C:/Users/USER/Downloads/vaccineCityLevel.csv'
-    new_fn = r'C:/Users/USER/git-repos/python3-junior-nogithub/Taiwan_COVID_19_Project/Csvs/Taiwan_COVID_19_'+today_name+'.csv'
+    old_fn=r'C:/Users/USER/Downloads/vaccineCityLevel.csv'
+    new_fn=r'C:/Users/USER/git-repos/python3-junior-nogithub/Taiwan_COVID_19_Side_Project/Csvs/Taiwan_COVID_19_'+today_name+'.csv'
     try:
-        os.rename(old_fn, new_fn)
+        os.rename(old_fn,new_fn)
         print('移動更名成功')
     except Exception as err:
         # 檢查檔案是否存在
-        if os.path.isfile(r'C:/Users/USER/git-repos/python3-junior-nogithub/Taiwan_COVID_19_Project/Csvs/Taiwan_COVID_19_'+today_name+'.csv'):
+        if os.path.isfile(new_fn):
             print('原檔案已存在\n下載檔未移動')
             try:
                 os.remove(old_fn)
             except OSError as e:
-                print('下載檔刪除失敗', e)
+                print('下載檔刪除失敗',e)
             else:
                 print('下載檔刪除成功')
         else:
-            print('檔案不存在或移動更名失敗')
+            print('檔案不存在、路徑不正確或移動更名失敗')
 
     driver.close()
 
